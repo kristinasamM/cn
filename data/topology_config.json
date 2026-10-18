@@ -1,0 +1,36 @@
+{
+  "topology_name": "SDN_Resilience_6Node_8Link",
+  "paper_reference": {
+    "title": "Analysis of Software-Defined Networking Resilience to Link Failure through Failover Routing Simulation",
+    "journal": "G-Tech: Jurnal Teknologi Terapan",
+    "volume": 10,
+    "issue": 1,
+    "year": 2026,
+    "doi": "https://doi.org/10.70609/g-tech.v10i1.8971"
+  },
+  "nodes": [
+    {"id": "LMS", "role": "server", "description": "Learning Management System Server", "x": 1.5, "y": 3.2},
+    {"id": "Core1", "role": "core", "description": "Primary Core SDN Switch", "x": 0.7, "y": 2.0},
+    {"id": "Edge2", "role": "edge", "description": "Secondary Edge SDN Switch", "x": 2.3, "y": 2.0},
+    {"id": "Edge1", "role": "edge", "description": "Ingress Edge SDN Switch (Source)", "x": 0.0, "y": 1.0},
+    {"id": "Core2", "role": "core", "description": "Redundant Backup Core SDN Switch", "x": 1.7, "y": 1.0},
+    {"id": "Cache", "role": "server", "description": "Local Caching Server", "x": 0.8, "y": 0.0}
+  ],
+  "links": [
+    {"source": "LMS", "target": "Core1", "capacity_mbps": 100.0, "weight": 1.0, "latency_ms": 5.0},
+    {"source": "LMS", "target": "Edge2", "capacity_mbps": 100.0, "weight": 1.0, "latency_ms": 5.0},
+    {"source": "Core1", "target": "Edge2", "capacity_mbps": 100.0, "weight": 1.0, "latency_ms": 5.0},
+    {"source": "Core1", "target": "Edge1", "capacity_mbps": 100.0, "weight": 1.0, "latency_ms": 5.0},
+    {"source": "Core2", "target": "Edge2", "capacity_mbps": 100.0, "weight": 1.0, "latency_ms": 5.0},
+    {"source": "Core2", "target": "Edge1", "capacity_mbps": 100.0, "weight": 1.0, "latency_ms": 5.0},
+    {"source": "Cache", "target": "Core2", "capacity_mbps": 100.0, "weight": 1.0, "latency_ms": 5.0},
+    {"source": "Cache", "target": "Edge1", "capacity_mbps": 100.0, "weight": 1.0, "latency_ms": 5.0}
+  ],
+  "simulation_defaults": {
+    "source_node": "Edge1",
+    "destination_node": "LMS",
+    "primary_demand_mbps": 70.0,
+    "background_load_mbps": 10.0,
+    "failure_link": ["Edge1", "Core1"]
+  }
+}

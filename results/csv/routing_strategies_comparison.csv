@@ -1,0 +1,5 @@
+Routing Strategy,Path,Hops,Before,During,After,Throughput_After,Packet_Loss_After,Resilience_Mechanism
+Shortest,Edge1 -> Core1 -> LMS,2,27.5,8.75,8.75,0.0,100.0,Static shortest path (no failover)
+Load,Edge1 -> Core2 -> Edge2 -> LMS,3,35.0,35.0,35.0,70.0,0.0,Utilization-aware load balancing
+Fault,Edge1 -> Core2 -> Edge2 -> LMS,3,27.5,32.5,35.0,70.0,0.0,Proactive link health degradation monitor
+Failover,Edge1 -> Core2 -> Edge2 -> LMS,3,27.5,8.75,35.0,70.0,0.0,Reactive SDN controller automatic failover

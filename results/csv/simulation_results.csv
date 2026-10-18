@@ -1,0 +1,4 @@
+phase,average_utilization,maximum_utilization,throughput,packet_loss,recovery_time
+Before Failure,27.5,80.0,70.0,0.0,0.0
+During Failure,8.75,10.0,0.0,100.0,0.0
+After Failover,35.0,80.0,70.0,0.0,24.74
